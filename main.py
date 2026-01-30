@@ -282,6 +282,6 @@ ui.add_head_html('''
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="theme-color" content="#5898d4">
-''')
+''', shared=True)
 
 ui.run(storage_secret='change_this_secret_key', title='Mood Journal')
