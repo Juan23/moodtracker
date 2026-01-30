@@ -259,4 +259,29 @@ def new_entry_page():
             ui.textarea('Notes/Comments').bind_value(form, 'notes').classes('w-full mt-2').props('rows=3')
             ui.button('Save Entry', on_click=save_entry).classes('w-full mt-4 bg-secondary text-white')
 
+@app.get('/manifest.json')
+def manifest():
+    return {
+        "name": "Mood Journal",
+        "short_name": "Mood",
+        "start_url": "/",
+        "display": "standalone",
+        "background_color": "#5898d4",
+        "theme_color": "#5898d4",
+        "icons": [
+            {
+                "src": "https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                "sizes": "512x512",
+                "type": "image/svg+xml"
+            }
+        ]
+    }
+
+ui.add_head_html('''
+    <link rel="manifest" href="/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#5898d4">
+''')
+
 ui.run(storage_secret='change_this_secret_key', title='Mood Journal')
